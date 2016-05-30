@@ -23,7 +23,6 @@ public class MainCanvas extends Canvas implements Runnable{
 
 	private BufferedImage spriteSheet = null;
 	private BufferedImage background;
-	private BufferedImage cursorImage;
 	
 	private Player player;
 	private Controller gameObjectsController;
@@ -32,9 +31,6 @@ public class MainCanvas extends Canvas implements Runnable{
 	private double timeOfLastShot = 0;
 	private double currTime = 0;
 	private double recoveryTime = 400;
-	
-	private int mouseX;
-	private int mouseY;
 	
 	private Textures images;
 	
@@ -110,7 +106,7 @@ public class MainCanvas extends Canvas implements Runnable{
 			
 			if(System.currentTimeMillis() - timer > 1000){
 				timer = System.currentTimeMillis();
-				//System.out.println("Ticks: " + updates + " Frames: " + frames);
+				System.out.println("Ticks: " + updates + " Frames: " + frames);
 				updates = 0;
 				frames = 0;
 			}
@@ -129,6 +125,7 @@ public class MainCanvas extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		
 		g.drawImage(background, 0, 0, WIDTH, HEIGHT, this);
+		g.drawString("Commits work", 100, 100);
 		
 		player.render(g);
 		gameObjectsController.render(g);
