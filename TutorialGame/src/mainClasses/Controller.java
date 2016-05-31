@@ -4,6 +4,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
+import gameObjects.Bullet;
+import gameObjects.Enemy;
+import gameObjects.GameObject;
+
 public class Controller {
 
 	private LinkedList<GameObject> gameObjects = new LinkedList<>();

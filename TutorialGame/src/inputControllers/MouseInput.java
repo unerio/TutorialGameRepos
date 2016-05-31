@@ -1,7 +1,9 @@
-package mainClasses;
+package inputControllers;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import mainClasses.MainCanvas;
 
 
 public class MouseInput extends MouseAdapter{

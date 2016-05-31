@@ -1,8 +1,11 @@
-package mainClasses;
+package gameObjects;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+
+import mainClasses.Controller;
+import spriteHandlers.Animation;
 
 public class Player extends GameObject{
 

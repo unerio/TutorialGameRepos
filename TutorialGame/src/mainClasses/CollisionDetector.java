@@ -1,5 +1,9 @@
 package mainClasses;
 
+import gameObjects.Bullet;
+import gameObjects.Enemy;
+import gameObjects.GameObject;
+
 public class CollisionDetector {
 
 	Controller objectController;

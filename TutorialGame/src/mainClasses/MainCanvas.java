@@ -13,6 +13,12 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
+import gameObjects.Player;
+import inputControllers.KeyInput;
+import inputControllers.MouseInput;
+import spriteHandlers.BufferedImageLoader;
+import spriteHandlers.Textures;
+
 public class MainCanvas extends Canvas implements Runnable{
 
 	private static final int WIDTH = 900;

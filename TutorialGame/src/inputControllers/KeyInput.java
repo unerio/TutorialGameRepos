@@ -1,7 +1,9 @@
-package mainClasses;
+package inputControllers;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import mainClasses.MainCanvas;
 
 public class KeyInput extends KeyAdapter{
 	

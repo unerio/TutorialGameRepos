@@ -1,4 +1,4 @@
-package mainClasses;
+package spriteHandlers;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
