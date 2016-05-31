@@ -104,10 +104,10 @@ public class MainCanvas extends Canvas implements Runnable{
 			lastTime = now;
 			if(delta >= 1){
 				tick();
+				render();
 				updates++;
 				delta = 0;
 			}
-			render();
 			frames++;
 			
 			if(System.currentTimeMillis() - timer > 1000){
