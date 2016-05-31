@@ -9,7 +9,7 @@ public class Bullet extends GameObject{
 	private final int DRAWNIMAGEWIDTH = 64;
 	private final int DRAWNIMAGEHEIGHT = 64;
 	
-	private double horizontalVelocity = 3;
+	private double horizontalVelocity;
 	private double dx;
 	private double dy;
 	private double startX;
@@ -37,7 +37,7 @@ public class Bullet extends GameObject{
 	}
 
 	private void calcY(){
-		double k = dy/dx;
+		double k = dy / dx;
 		setY(-k * (getX() - startX) + startY);
 	}
 	
@@ -47,9 +47,7 @@ public class Bullet extends GameObject{
 	}
 	
 	private void setHorizontalVelocity(){
-		if(dx < 0){
-			horizontalVelocity *= -1;
-		}
+		horizontalVelocity = dx / dy;
 	}
 	
 }
