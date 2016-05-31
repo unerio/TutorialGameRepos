@@ -136,16 +136,16 @@ public class MainCanvas extends Canvas implements Runnable{
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_W){
-			player.move("up");
+			player.setMovement("up", true);
 		}
 		if(key == KeyEvent.VK_A){
-			player.move("left");
+			player.setMovement("left", true);
 		}
 		if(key == KeyEvent.VK_S){
-			player.move("down");
+			player.setMovement("down", true);
 		}
 		if(key == KeyEvent.VK_D){
-			player.move("right");
+			player.setMovement("right", true);
 		}
 		if(key == KeyEvent.VK_E){
 			gameObjectsController.addEnemy();
@@ -164,16 +164,16 @@ public class MainCanvas extends Canvas implements Runnable{
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_W){
-			player.stopMoving("vertically");
+			player.setMovement("up", false);
 		}
-		else if(key == KeyEvent.VK_A){
-			player.stopMoving("horizontally");
+		if(key == KeyEvent.VK_A){
+			player.setMovement("left", false);
 		}
-		else if(key == KeyEvent.VK_S){
-			player.stopMoving("vertically");
+		if(key == KeyEvent.VK_S){
+			player.setMovement("down", false);
 		}
-		else if(key == KeyEvent.VK_D){
-			player.stopMoving("horizontally");
+		if(key == KeyEvent.VK_D){
+			player.setMovement("right", false);
 		}
 	}
 	

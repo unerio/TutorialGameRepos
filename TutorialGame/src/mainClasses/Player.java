@@ -16,12 +16,21 @@ public class Player extends GameObject{
 	private double velX;
 	private double velY;
 	
+	private boolean moveUp;
+	private boolean moveLeft;
+	private boolean moveDown;
+	private boolean moveRight;
+	
 	private Animation playerAnimation;
 	
 	public Player(double x, double y, BufferedImage[] animationFrames){
 		super(x, y);
 		this.playerAnimation = new Animation(200, DRAWNIMAGEWIDTH, DRAWNIMAGEHEIGHT,
 											 animationFrames[0], animationFrames[1]);
+		this.moveUp = false;
+		this.moveLeft = false;
+		this.moveDown = false;
+		this.moveRight = false;
 	}
 	
 	@Override
@@ -42,34 +51,48 @@ public class Player extends GameObject{
 		}
 		
 		playerAnimation.runAnimation();
+		move();
 	}
 	
 	public void render(Graphics g){
 		playerAnimation.drawAnimation(g, getX(), getY(), 0);
 	}
 	
-	public void move(String direction){
+	public void setMovement(String direction, boolean startMoving){
 		if("up".equals(direction)){
-			velY = -2;
+			moveUp = startMoving;
 		}
-		else if("left".equals(direction)){
-			velX = -2;
+		if("left".equals(direction)){
+			moveLeft = startMoving;
 		}
-		else if("down".equals(direction)){
-			velY = 2;
+		if("down".equals(direction)){
+			moveDown = startMoving;
 		}
-		else if("right".equals(direction)){
-			velX = 2;
+		if("right".equals(direction)){
+			moveRight = startMoving;
 		}
 	}
 	
-	public void stopMoving(String direction){
-		if("vertically".equals(direction)){
-			velY = 0;
+	public void move(){
+		if(moveUp){
+			velY = -2;
 		}
-		else if("horizontally".equals(direction)){
+		if(moveLeft){
+			velX = -2;
+		}
+		if(moveDown){
+			velY = 2;
+		}
+		if(moveRight){
+			velX = 2;
+		}
+		if((moveRight && moveLeft) || (!moveRight && !moveLeft)){
 			velX = 0;
 		}
+		if(moveUp && moveDown || (!moveUp && !moveDown)){
+			velY = 0;
+		}
+		
 	}
 	
 	public void shoot(Controller bulletController, int chX, int chY){
