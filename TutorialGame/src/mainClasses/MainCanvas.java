@@ -125,7 +125,6 @@ public class MainCanvas extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		
 		g.drawImage(background, 0, 0, WIDTH, HEIGHT, this);
-		g.drawString("Commits work", 100, 100);
 		
 		player.render(g);
 		gameObjectsController.render(g);
@@ -178,7 +177,7 @@ public class MainCanvas extends Canvas implements Runnable{
 		}
 	}
 	
-	public void mouseClicked(MouseEvent e){
+	public void mousePressed(MouseEvent e){
 		if(e.getY() < player.getY()){
 			player.shoot(gameObjectsController, e.getX(), e.getY());
 		}

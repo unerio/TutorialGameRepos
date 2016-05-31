@@ -13,8 +13,8 @@ public class MouseInput extends MouseAdapter{
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e){
-		mc.mouseClicked(e);
+	public void mousePressed(MouseEvent e){
+		mc.mousePressed(e);
 	}
 	
 }
