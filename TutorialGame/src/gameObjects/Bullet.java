@@ -47,7 +47,7 @@ public class Bullet extends GameObject{
 	}
 	
 	private void setHorizontalVelocity(){
-		horizontalVelocity = dx / dy;
+		horizontalVelocity = dx / dy * 5;
 	}
 	
 }

@@ -52,7 +52,7 @@ public class MainCanvas extends Canvas implements Runnable{
 		
 		images = new Textures(spriteSheet);
 		
-		player = new Player(200.0, 400.0, images.getPlayerAnimation());
+		player = new Player(WIDTH * 0.45, HEIGHT * 0.85, images.getPlayerAnimation());
 		
 		gameObjectsController = new Controller(images.getBulletImage(),
 										  images.getEnemyAnimation());
