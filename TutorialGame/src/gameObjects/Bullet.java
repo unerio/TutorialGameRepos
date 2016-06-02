@@ -29,25 +29,24 @@ public class Bullet extends GameObject{
 	
 	public void tick(){
 		setX(getX() + horizontalVelocity);
-		calcY();
+		setY(-dy/dx * (getX() - startX) + startY);
 	}
 	
 	public void render(Graphics g){
 		g.drawImage(bulletImage, (int)getX(), (int)getY(), DRAWNIMAGEWIDTH, DRAWNIMAGEHEIGHT, null);
+		System.out.println("y: " + getY());
 	}
 
-	private void calcY(){
-		double k = dy / dx;
-		setY(-k * (getX() - startX) + startY);
-	}
-	
 	@Override
 	public Rectangle getBounds() {
 		return new Rectangle((int)getX() + 30, (int)getY() + 30, 4, 4);
 	}
 	
 	private void setHorizontalVelocity(){
-		horizontalVelocity = dx / dy * 5;
+		horizontalVelocity = 5.0;
+		if(dx < 0){
+			horizontalVelocity *= -1;
+		}
 	}
 	
 }

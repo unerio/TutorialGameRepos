@@ -26,7 +26,8 @@ public class Controller {
 			if(gameObjects.get(ind) != null){
 				gameObjects.get(ind).tick();
 				if(gameObjects.get(ind) instanceof Bullet){
-					if(gameObjects.get(ind).getY() < -30){
+					if(gameObjects.get(ind).getY() < -30 || gameObjects.get(ind).getX() < -30 || 
+							gameObjects.get(ind).getX() > 930){
 						removeObject(gameObjects.get(ind));
 					}
 				}
@@ -57,8 +58,15 @@ public class Controller {
 		gameObjects.remove(oldObject);
 	}
 	
-	public LinkedList<GameObject> getObjects(){
-		return gameObjects;
+	public int getObjectCount(){
+		return gameObjects.size();
+	}
+	
+	public GameObject getObjectAt(int ind){
+		if(ind < gameObjects.size()){
+			return gameObjects.get(ind);
+		}
+		return null;
 	}
 	
 }
