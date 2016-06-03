@@ -9,7 +9,7 @@ public class Bullet extends GameObject{
 	private final int DRAWNIMAGEWIDTH = 64;
 	private final int DRAWNIMAGEHEIGHT = 64;
 	
-	private final double TOTALVELOCITY = 5;
+	private final double TOTALVELOCITY = 8;
 	
 	private double horizontalVelocity;
 	private double verticalVelocity;
@@ -21,8 +21,8 @@ public class Bullet extends GameObject{
 	public Bullet(double x, double y, double dx, double dy, BufferedImage bulletImage){
 		super(x, y);
 		this.bulletImage = bulletImage;
-		this.dx = dx;
-		this.dy = dy;
+		this.dx = dx - 16;
+		this.dy = dy - 16;
 		calcVelocities();
 	}
 	

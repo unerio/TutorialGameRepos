@@ -112,7 +112,7 @@ public class MainCanvas extends Canvas implements Runnable{
 			
 			if(System.currentTimeMillis() - timer > 1000){
 				timer = System.currentTimeMillis();
-				//System.out.println("Ticks: " + updates + " Frames: " + frames);
+				System.out.println("Ticks: " + updates + " Frames: " + frames);
 				updates = 0;
 				frames = 0;
 			}
