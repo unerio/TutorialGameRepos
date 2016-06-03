@@ -9,32 +9,30 @@ public class Bullet extends GameObject{
 	private final int DRAWNIMAGEWIDTH = 64;
 	private final int DRAWNIMAGEHEIGHT = 64;
 	
+	private final double TOTALVELOCITY = 5;
+	
 	private double horizontalVelocity;
+	private double verticalVelocity;
 	private double dx;
 	private double dy;
-	private double startX;
-	private double startY;
 	
 	private BufferedImage bulletImage;
 	
 	public Bullet(double x, double y, double dx, double dy, BufferedImage bulletImage){
 		super(x, y);
-		startX = x;
-		startY = y;
 		this.bulletImage = bulletImage;
 		this.dx = dx;
 		this.dy = dy;
-		setHorizontalVelocity();
+		calcVelocities();
 	}
 	
 	public void tick(){
 		setX(getX() + horizontalVelocity);
-		setY(-dy/dx * (getX() - startX) + startY);
+		setY(getY() + verticalVelocity);
 	}
 	
 	public void render(Graphics g){
 		g.drawImage(bulletImage, (int)getX(), (int)getY(), DRAWNIMAGEWIDTH, DRAWNIMAGEHEIGHT, null);
-		System.out.println("y: " + getY());
 	}
 
 	@Override
@@ -42,11 +40,11 @@ public class Bullet extends GameObject{
 		return new Rectangle((int)getX() + 30, (int)getY() + 30, 4, 4);
 	}
 	
-	private void setHorizontalVelocity(){
-		horizontalVelocity = 5.0;
-		if(dx < 0){
-			horizontalVelocity *= -1;
-		}
+	private void calcVelocities(){
+		double distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+		double partOfDistance = TOTALVELOCITY / distance;
+		horizontalVelocity = dx * partOfDistance;
+		verticalVelocity = -dy * partOfDistance;
 	}
 	
 }
