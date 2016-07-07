@@ -64,15 +64,27 @@ public class Player extends GameObject{
 	public void setMovement(String direction, boolean startMoving){
 		if("up".equals(direction)){
 			moveUp = startMoving;
+			if(startMoving){
+				moveDown = false;
+			}
 		}
 		if("left".equals(direction)){
 			moveLeft = startMoving;
+			if(startMoving){
+				moveRight = false;
+			}
 		}
 		if("down".equals(direction)){
 			moveDown = startMoving;
+			if(startMoving){
+				moveUp = false;
+			}
 		}
 		if("right".equals(direction)){
 			moveRight = startMoving;
+			if(startMoving){
+				moveLeft = false;
+			}
 		}
 	}
 	
@@ -89,10 +101,10 @@ public class Player extends GameObject{
 		if(moveRight){
 			velX = 2;
 		}
-		if((moveRight && moveLeft) || (!moveRight && !moveLeft)){
+		if(!moveRight && !moveLeft){
 			velX = 0;
 		}
-		if(moveUp && moveDown || (!moveUp && !moveDown)){
+		if(!moveUp && !moveDown){
 			velY = 0;
 		}
 		
