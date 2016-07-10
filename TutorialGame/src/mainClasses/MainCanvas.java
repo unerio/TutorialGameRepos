@@ -33,11 +33,11 @@ public class MainCanvas extends Canvas implements Runnable{
 	private Player player;
 	private Controller gameObjectsController;
 	private CollisionDetector collisionDetector;
-	
+	/*
 	private double timeOfLastShot = 0;
 	private double currTime = 0;
 	private double recoveryTime = 400;
-	
+	*/
 	private Textures images;
 	
 	private Cursor crosshair;
@@ -92,7 +92,7 @@ public class MainCanvas extends Canvas implements Runnable{
 	@Override
 	public void run() {
 		long lastTime = System.nanoTime();
-		final double AMOUNTOFTICKS = 60.0;
+		final double AMOUNTOFTICKS = 10.0;
 		double ns = 1000000000 / AMOUNTOFTICKS;
 		double delta = 0;
 		int updates = 0;
@@ -112,7 +112,7 @@ public class MainCanvas extends Canvas implements Runnable{
 			
 			if(System.currentTimeMillis() - timer > 1000){
 				timer = System.currentTimeMillis();
-				System.out.println("Ticks: " + updates + " Frames: " + frames);
+				//System.out.println("Ticks: " + updates + " Frames: " + frames);
 				updates = 0;
 				frames = 0;
 			}

@@ -14,13 +14,11 @@ public class Enemy extends GameObject{
 	private static final int FREQUENCY = 150;
 	private static final int MINYPOSITION = 50;
 	private static final int MAXYPOSITION = 150;
-	private static final int VISIBLEXPOSITION = 2;
-	private static final int IMAGEWIDTH = 32;
-	private static final int IMAGEHEIGHT = 32;
-	private static final int DRAWNIMAGEWIDTH = 64;
-	private static final int DRAWNIMAGEHEIGHT = 64;
-	private static final int MAXXPOSITION = 900 + DRAWNIMAGEWIDTH / 2;
-	private static final int STARTXPOSITION = -DRAWNIMAGEWIDTH;
+	private static final int VISIBLEXPOSITION = 0;
+	private static final int IMAGEWIDTH = 64;
+	private static final int IMAGEHEIGHT = 64;
+	private static final int MAXXPOSITION = 900;
+	private static final int STARTXPOSITION = 750;
 
 	private static final double VELOCITY = 1.2;
 	
@@ -36,29 +34,29 @@ public class Enemy extends GameObject{
 		this.startY = Math.random() * MAXYPOSITION + MINYPOSITION;
 		setX(STARTXPOSITION);
 		setY(Math.sin((Math.PI / FREQUENCY) * getX()) * AMPLITUDE + startY);
-		this.enemyAnimation = new Animation(200, DRAWNIMAGEWIDTH, DRAWNIMAGEHEIGHT,
-											animationFrames[0], animationFrames[1], animationFrames[2]);
+		this.enemyAnimation = new Animation(200, animationFrames[0], animationFrames[1],
+												 animationFrames[2]);
 	}
 	
 	@Override
 	public void tick(){
 		setX(getX() + VELOCITY);
 		setY(Math.sin((Math.PI / FREQUENCY) * getX()) * AMPLITUDE + startY);
-		if(getX() + IMAGEWIDTH > MAXXPOSITION){
+		if(getX() > MAXXPOSITION){
 			setX(VISIBLEXPOSITION);
 			splitting = false;
 			tempSplitImageFront = null;
 			tempSplitImageBack = null;
 		}
-		else if(getX() + DRAWNIMAGEWIDTH > MAXXPOSITION){
+		else if(getX() + IMAGEWIDTH > MAXXPOSITION){
 			tempSplitImageFront = enemyAnimation.getCurrImage().getSubimage(IMAGEWIDTH - ((int)getX() +
-															DRAWNIMAGEWIDTH - MAXXPOSITION) - 1,
+															IMAGEWIDTH - MAXXPOSITION) - 1,
 														 0,
-												    	 (int)getX() + DRAWNIMAGEWIDTH - MAXXPOSITION + 1,
+												    	 (int)getX() + IMAGEWIDTH - MAXXPOSITION + 1,
 												    	 IMAGEHEIGHT);
 			tempSplitImageBack = enemyAnimation.getCurrImage().getSubimage(0, 0,
 				    									IMAGEWIDTH - ((int)getX() +
-				    										DRAWNIMAGEWIDTH - MAXXPOSITION),
+				    										IMAGEWIDTH - MAXXPOSITION),
 				    									IMAGEHEIGHT);
 			splitting = true;
 		}
@@ -69,27 +67,21 @@ public class Enemy extends GameObject{
 	@Override
 	public void render(Graphics g){
 		if(splitting){
-			g.drawImage(tempSplitImageBack,
-							(int)getX(), (int) getY(),
-							(IMAGEWIDTH - ((int)getX() +
-								DRAWNIMAGEWIDTH - MAXXPOSITION) - 1) * 2, DRAWNIMAGEHEIGHT,
-							null);
-			g.drawImage(tempSplitImageFront,
-							VISIBLEXPOSITION, (int) getY(),
-							((int)getX() -
-								MAXXPOSITION + DRAWNIMAGEWIDTH + 1) * 2, DRAWNIMAGEHEIGHT,
-							null);
+			g.drawImage(tempSplitImageBack, (int)getX(), (int)getY(), null);
+			g.drawImage(tempSplitImageFront, VISIBLEXPOSITION, (int)getY(), null);
+			System.out.println("Anders: " + getX());
 		}
 		else{
 			enemyAnimation.drawAnimation(g, getX(), getY(), 0);
+			System.out.println("Normal: " + getX());
 		}
 	}
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle((int)getX() + 3 * DRAWNIMAGEWIDTH / IMAGEWIDTH,
-							 (int)getY() + 10 * DRAWNIMAGEHEIGHT / IMAGEHEIGHT,
-							 DRAWNIMAGEWIDTH - 6 * DRAWNIMAGEWIDTH / IMAGEWIDTH,
-							 DRAWNIMAGEHEIGHT - 20 * DRAWNIMAGEHEIGHT / IMAGEHEIGHT);
+		return new Rectangle((int)getX() + 3 * IMAGEWIDTH / IMAGEWIDTH,
+							 (int)getY() + 10 * IMAGEHEIGHT / IMAGEHEIGHT,
+							 IMAGEWIDTH - 6 * IMAGEWIDTH / IMAGEWIDTH,
+							 IMAGEHEIGHT - 20 * IMAGEHEIGHT / IMAGEHEIGHT);
 	}
 }

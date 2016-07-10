@@ -6,9 +6,6 @@ import java.awt.image.BufferedImage;
 
 public class Bullet extends GameObject{
 	
-	private final int DRAWNIMAGEWIDTH = 64;
-	private final int DRAWNIMAGEHEIGHT = 64;
-	
 	private final double TOTALVELOCITY = 8;
 	
 	private double horizontalVelocity;
@@ -32,7 +29,7 @@ public class Bullet extends GameObject{
 	}
 	
 	public void render(Graphics g){
-		g.drawImage(bulletImage, (int)getX(), (int)getY(), DRAWNIMAGEWIDTH, DRAWNIMAGEHEIGHT, null);
+		g.drawImage(bulletImage, (int)getX(), (int)getY(), null);
 	}
 
 	@Override

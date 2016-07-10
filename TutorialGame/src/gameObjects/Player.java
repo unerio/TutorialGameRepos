@@ -13,8 +13,6 @@ public class Player extends GameObject{
 	private final int MAXXPOSITION = 835;
 	private final int MINYPOSITION = 0;
 	private final int MAXYPOSITION = 535;
-	private final int DRAWNIMAGEWIDTH = 64;
-	private final int DRAWNIMAGEHEIGHT = 64;
 	
 	private double velX;
 	private double velY;
@@ -28,8 +26,7 @@ public class Player extends GameObject{
 	
 	public Player(double x, double y, BufferedImage[] animationFrames){
 		super(x, y);
-		this.playerAnimation = new Animation(200, DRAWNIMAGEWIDTH, DRAWNIMAGEHEIGHT,
-											 animationFrames[0], animationFrames[1]);
+		this.playerAnimation = new Animation(200,animationFrames[0], animationFrames[1]);
 		this.moveUp = false;
 		this.moveLeft = false;
 		this.moveDown = false;

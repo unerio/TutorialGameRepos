@@ -18,16 +18,16 @@ public class Textures {
 	}
 	
 	private void directTextures(){
-		playerAnimation[0] = sprites.getImage(1, 1, 32, 32);
-		playerAnimation[1] = sprites.getImage(2, 1, 32, 32);
+		playerAnimation[0] = sprites.getImage(1, 1, 64, 64);
+		playerAnimation[1] = sprites.getImage(2, 1, 64, 64);
 		
 		bulletImage = sprites.getImage(1, 2, 32, 32);
 		
-		enemyAnimation[0] = sprites.getImage(1, 3, 32, 32);
-		enemyAnimation[1] = sprites.getImage(2, 3, 32, 32);
-		enemyAnimation[2] = sprites.getImage(3, 3, 32, 32);
+		enemyAnimation[0] = sprites.getImage(1, 3, 64, 64);
+		enemyAnimation[1] = sprites.getImage(2, 3, 64, 64);
+		enemyAnimation[2] = sprites.getImage(3, 3, 64, 64);
 		
-		crosshairImage = sprites.getImage(1, 4, 32, 32);
+		crosshairImage = sprites.getImage(1, 4, 64, 64);
 	}
 	
 	public BufferedImage[] getPlayerAnimation(){
